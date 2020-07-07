@@ -6,6 +6,7 @@ class TennisGame {
     // They are also constants and should be named in caps
     this.player1Name = player1Name;
     this.player2Name = player2Name;
+    this.score = "";
   }
 
   wonPoint(playerName) {
@@ -16,58 +17,59 @@ class TennisGame {
     }
   }
 
+  getScore() {}
+
   // This is a long, very messy and confusing method.
   // Seperate the concerns maybe one for draw, one for deuce, one for point won
   // Set score and and tempScore the the constructor function and call them later in the application?
 
   getScore() {
-    var score = "";
     var tempScore = 0;
     if (this.PLAYER_1_SCORE === this.PLAYER_2_SCORE) {
       switch (this.PLAYER_1_SCORE) {
         case 0:
-          score = "Love-All";
+          this.score = "Love-All";
           break;
         case 1:
-          score = "Fifteen-All";
+          this.score = "Fifteen-All";
           break;
         case 2:
-          score = "Thirty-All";
+          this.score = "Thirty-All";
           break;
         default:
-          score = "Deuce";
+          this.score = "Deuce";
           break;
       }
     } else if (this.PLAYER_1_SCORE >= 4 || this.PLAYER_2_SCORE >= 4) {
       var minusResult = this.PLAYER_1_SCORE - this.PLAYER_2_SCORE;
-      if (minusResult === 1) score = "Advantage player1";
-      else if (minusResult === -1) score = "Advantage player2";
-      else if (minusResult >= 2) score = "Win for player1";
-      else score = "Win for player2";
+      if (minusResult === 1) this.score = "Advantage player1";
+      else if (minusResult === -1) this.score = "Advantage player2";
+      else if (minusResult >= 2) this.score = "Win for player1";
+      else this.score = "Win for player2";
     } else {
       for (var i = 1; i < 3; i++) {
         if (i === 1) tempScore = this.PLAYER_1_SCORE;
         else {
-          score += "-";
+          this.score += "-";
           tempScore = this.PLAYER_2_SCORE;
         }
         switch (tempScore) {
           case 0:
-            score += "Love";
+            this.score += "Love";
             break;
           case 1:
-            score += "Fifteen";
+            this.score += "Fifteen";
             break;
           case 2:
-            score += "Thirty";
+            this.score += "Thirty";
             break;
           case 3:
-            score += "Forty";
+            this.score += "Forty";
             break;
         }
       }
     }
-    return score;
+    return this.score;
   }
 }
 
