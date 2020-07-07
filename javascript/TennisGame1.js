@@ -1,10 +1,7 @@
-// This entire structure isn't wrapped in a class.
-
 class TennisGame {
   constructor(player1Name, player2Name) {
-    // The constructor function doesn't need the player 1 & 2 arguments?
-    this.m_score1 = 0;
-    this.m_score2 = 0;
+    this.PLAYER_1_SCORE = 0;
+    this.PLAYER_2_SCORE = 0;
     // Why are these m_score? If they represent a player score then just state that
     // They are also constants and should be named in caps
     this.player1Name = player1Name;
@@ -13,17 +10,17 @@ class TennisGame {
 
   wonPoint(playerName) {
     if (playerName === "player1") {
-      return (this.m_score1 += 1);
+      return (this.PLAYER_1_SCORE += 1);
     } else {
-      return (this.m_score2 += 1);
+      return (this.PLAYER_2_SCORE += 1);
     }
   }
 
   getScore() {
     var score = "";
     var tempScore = 0;
-    if (this.m_score1 === this.m_score2) {
-      switch (this.m_score1) {
+    if (this.PLAYER_1_SCORE === this.PLAYER_2_SCORE) {
+      switch (this.PLAYER_1_SCORE) {
         case 0:
           score = "Love-All";
           break;
@@ -37,18 +34,18 @@ class TennisGame {
           score = "Deuce";
           break;
       }
-    } else if (this.m_score1 >= 4 || this.m_score2 >= 4) {
-      var minusResult = this.m_score1 - this.m_score2;
+    } else if (this.PLAYER_1_SCORE >= 4 || this.PLAYER_2_SCORE >= 4) {
+      var minusResult = this.PLAYER_1_SCORE - this.PLAYER_2_SCORE;
       if (minusResult === 1) score = "Advantage player1";
       else if (minusResult === -1) score = "Advantage player2";
       else if (minusResult >= 2) score = "Win for player1";
       else score = "Win for player2";
     } else {
       for (var i = 1; i < 3; i++) {
-        if (i === 1) tempScore = this.m_score1;
+        if (i === 1) tempScore = this.PLAYER_1_SCORE;
         else {
           score += "-";
-          tempScore = this.m_score2;
+          tempScore = this.PLAYER_2_SCORE;
         }
         switch (tempScore) {
           case 0:
