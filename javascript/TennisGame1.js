@@ -1,9 +1,7 @@
 class TennisGame {
   constructor(player1Name, player2Name) {
-    this.PLAYER_1_SCORE = 0;
-    this.PLAYER_2_SCORE = 0;
-    // Why are these m_score? If they represent a player score then just state that
-    // They are also constants and should be named in caps
+    this.player1Score = 0;
+    this.player2Score = 0;
     this.player1Name = player1Name;
     this.player2Name = player2Name;
     this.score = "";
@@ -12,21 +10,19 @@ class TennisGame {
 
   wonPoint(playerName) {
     if (playerName === this.player1Name) {
-      return (this.PLAYER_1_SCORE += 1);
+      return (this.player1Score += 1);
     } else {
-      return (this.PLAYER_2_SCORE += 1);
+      return (this.player2Score += 1);
     }
   }
-
-  getScore() {}
 
   // This is a long, very messy and confusing method.
   // Seperate the concerns maybe one for draw, one for deuce, one for point won
   // Set score and and tempScore the the constructor function and call them later in the application?
 
   getScore() {
-    if (this.PLAYER_1_SCORE === this.PLAYER_2_SCORE) {
-      switch (this.PLAYER_1_SCORE) {
+    if (this.player1Score === this.player2Score) {
+      switch (this.player1Score) {
         case 0:
           this.score = "Love-All";
           break;
@@ -40,18 +36,18 @@ class TennisGame {
           this.score = "Deuce";
           break;
       }
-    } else if (this.PLAYER_1_SCORE >= 4 || this.PLAYER_2_SCORE >= 4) {
-      var minusResult = this.PLAYER_1_SCORE - this.PLAYER_2_SCORE;
+    } else if (this.player1Score >= 4 || this.player2Score >= 4) {
+      var minusResult = this.player1Score - this.player2Score;
       if (minusResult === 1) this.score = "Advantage player1";
       else if (minusResult === -1) this.score = "Advantage player2";
       else if (minusResult >= 2) this.score = "Win for player1";
       else this.score = "Win for player2";
     } else {
       for (var i = 1; i < 3; i++) {
-        if (i === 1) this.tempScore = this.PLAYER_1_SCORE;
+        if (i === 1) this.tempScore = this.player1Score;
         else {
           this.score += "-";
-          this.tempScore = this.PLAYER_2_SCORE;
+          this.tempScore = this.player2Score;
         }
         switch (this.tempScore) {
           case 0:
