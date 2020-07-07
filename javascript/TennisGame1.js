@@ -7,6 +7,7 @@ class TennisGame {
     this.player1Name = player1Name;
     this.player2Name = player2Name;
     this.score = "";
+    this.tempScore = 0;
   }
 
   wonPoint(playerName) {
@@ -24,7 +25,6 @@ class TennisGame {
   // Set score and and tempScore the the constructor function and call them later in the application?
 
   getScore() {
-    var tempScore = 0;
     if (this.PLAYER_1_SCORE === this.PLAYER_2_SCORE) {
       switch (this.PLAYER_1_SCORE) {
         case 0:
@@ -48,12 +48,12 @@ class TennisGame {
       else this.score = "Win for player2";
     } else {
       for (var i = 1; i < 3; i++) {
-        if (i === 1) tempScore = this.PLAYER_1_SCORE;
+        if (i === 1) this.tempScore = this.PLAYER_1_SCORE;
         else {
           this.score += "-";
-          tempScore = this.PLAYER_2_SCORE;
+          this.tempScore = this.PLAYER_2_SCORE;
         }
-        switch (tempScore) {
+        switch (this.tempScore) {
           case 0:
             this.score += "Love";
             break;
