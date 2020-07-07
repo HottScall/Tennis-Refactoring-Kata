@@ -9,12 +9,16 @@ class TennisGame {
   }
 
   wonPoint(playerName) {
-    if (playerName === "player1") {
+    if (playerName === this.player1Name) {
       return (this.PLAYER_1_SCORE += 1);
     } else {
       return (this.PLAYER_2_SCORE += 1);
     }
   }
+
+  // This is a long, very messy and confusing method.
+  // Seperate the concerns maybe one for draw, one for deuce, one for point won
+  // Set score and and tempScore the the constructor function and call them later in the application?
 
   getScore() {
     var score = "";
