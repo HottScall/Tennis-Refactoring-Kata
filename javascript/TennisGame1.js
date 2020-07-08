@@ -1,4 +1,4 @@
-class TennisGame {
+var TennisGame1 = class {
   constructor(player1Name, player2Name) {
     this.player1Score = 0;
     this.player2Score = 0;
@@ -67,8 +67,8 @@ class TennisGame {
     }
     return this.score;
   }
-}
+};
 
 if (typeof window === "undefined") {
-  module.exports = TennisGame;
+  module.exports = TennisGame1;
 }
